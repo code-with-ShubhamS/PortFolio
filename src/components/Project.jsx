@@ -10,7 +10,7 @@ const Project = () => {
 
 
         <div className=" flex justify-center items-center">
-          <div className="flex flex-col p-1 rounded-lg overflow-hidden max-w-[60rem] relative mt-[8rem] z-20">
+          <div className="flex flex-col p-1 rounded-lg overflow-hidden max-w-[60rem] relative mt-[5rem] z-20">
         
         {
             ProjectArr.map((ProjectArr,index)=>{

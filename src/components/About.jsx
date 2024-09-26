@@ -10,7 +10,7 @@ const About = () => {
   
   return (
     <div className="flex justify-center items-center">
-          <div className="flex flex-col p-6 rounded-lg overflow-hidden  max-w-[50rem] relative mt-[8rem] z-20">
+          <div className="flex flex-col p-6 rounded-lg overflow-hidden  max-w-[50rem] relative mt-[5rem] z-20">
     <div>
       <div>
         <h1 className="text-[3rem] mb-3 font-bold">About</h1>

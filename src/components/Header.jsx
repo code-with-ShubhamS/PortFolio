@@ -15,14 +15,14 @@ const Header = () => {
 
 
   return (
-    <div className="p-[1rem] flex justify-around items-center w-full fixed z-[99999]  backdrop-blur-lg gap-5">
+    <div className="p-[1rem] flex justify-between items-center w-full fixed z-[99999]  backdrop-blur-lg gap-5">
       <div className="">
         <Link onClick={()=>{setactiveClassName("")}} to="/">
           {" "}
           <img src="myLogo.png" alt="" className={`w-12 cursor-pointer`} />
         </Link>
       </div>
-      <div className=" w-[17rem]">
+      <div className=" w-[12rem] sm:w-[17rem]">
         <ul className="flex list-none justify-between text-[1rem]">
           <Link to="/about">
             <li onClick={(e)=>{setMyActiveClass(e.target.innerText)}} className= {(activeClassName==="About"?"text-white font-bold cursor-pointer":" text-[#6c6d6e] font-bold cursor-pointer")}>
