@@ -5,6 +5,7 @@ import { RiTailwindCssFill } from "react-icons/ri";
 import { IoLogoVercel } from "react-icons/io5";
 import { FiFramer } from "react-icons/fi";
 import EndComponent from "./EndComponent";
+import ResumeBtn from "./ResumeBtn";
 
 const About = () => {
   
@@ -13,11 +14,13 @@ const About = () => {
           <div className="flex flex-col p-6 rounded-lg overflow-hidden  max-w-[50rem] relative mt-[5rem] z-20">
     <div>
       <div>
-        <h1 className="text-[3rem] mb-3 font-bold">About</h1>
+        <div className="flex items-center justify-between mb-4">
+        <h1 className="text-[3rem] font-bold">About</h1>
+        <ResumeBtn></ResumeBtn>
+        </div>
         <p>👋 Hi there! I am Shubham, a student who loves web development.</p>
         <DivideLine></DivideLine>
       </div>
-
       <div>
         <h1 className="text-[1.5rem] font-medium">WHO AM I</h1>
         <p className="my-4">
