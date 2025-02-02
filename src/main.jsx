@@ -7,6 +7,7 @@ import Home from './components/Home.jsx'
 import About from './components/About.jsx'
 import Project from './components/Project.jsx'
 import CommingSoon from './components/CommingSoon.jsx'
+import Playground from "./components/Playground.jsx"
 // import store from './store/index.jsx'
 // import {Provider} from "react-redux"
 
@@ -17,9 +18,12 @@ const router = createBrowserRouter([
     children:[
       {path:"/",element:<Home/>},
       {path:"/about",element:<About/>},
-      {path:"/Project",element:<Project/>},
-      {path:"/Blog",element:<CommingSoon/>},
-    ]
+      {path:"/project",element:<Project/>},
+      {path:"/blog",element:<CommingSoon/>},
+    ],
+  },
+  {
+    path:"/playground",element:<Playground/>,
   }
   
 ])

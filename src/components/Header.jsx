@@ -1,44 +1,46 @@
-import React, { useCallback, useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useCallback, useEffect, useState } from "react";
+import { Link, NavLink } from "react-router-dom";
 
 
 const Header = () => {
+  const [isWidth377, setIsWidth377] = useState(false);
 
-  const [activeClassName,setactiveClassName]=useState("");
+  useEffect(() => {
+    const mediaQuery = window.matchMedia("(max-width: 377px)");
 
-  const setMyActiveClass= useCallback(function (value){
-    setactiveClassName(value);
-  })
+    const handleChange = (e) => {
+      setIsWidth377(e.matches);
+    };
+
+    // Check on initial load
+    setIsWidth377(mediaQuery.matches);
+
+    // Add event listener
+    mediaQuery.addEventListener("change", handleChange);
+
+    // Cleanup listener
+    return () => {
+      mediaQuery.removeEventListener("change", handleChange);
+    };
+  }, []);
   
-  
-  
-
-
   return (
     <div className="p-[1rem] flex justify-between items-center w-full fixed z-[99999]  backdrop-blur-lg gap-5">
-      <div className="md:ml-[3rem]">
-        <Link onClick={()=>{setactiveClassName("")}} to="/">
+      <div className="md:ml-[3rem] hide-on-377">
+        <Link to="/">
           {" "}
           <img src="myLogo.png" alt="" className={`w-12 cursor-pointer`} />
         </Link>
       </div>
-      <div className=" w-[12rem] sm:w-[17rem] md:mr-[3rem]">
-        <ul className="flex list-none justify-between text-[1rem]">
-          <Link to="/about">
-            <li onClick={(e)=>{setMyActiveClass(e.target.innerText)}} className= {(activeClassName==="About"?"text-white font-bold cursor-pointer":" text-[#6c6d6e] font-bold cursor-pointer")}>
-              About
-            </li>
-          </Link  >
-          <Link to="/Project">
-          <li onClick={(e)=>{setMyActiveClass(e.target.innerText)}} className= {(activeClassName==="Project"?"text-white font-bold cursor-pointer":" text-[#6c6d6e] font-bold cursor-pointer")}>
-            Project
-          </li>
-          </Link>
-          <Link to="/Blog">
-          <li onClick={(e)=>{setMyActiveClass(e.target.innerText)}} className= {(activeClassName==="Blog" ?"text-white font-bold cursor-pointer":" text-[#6c6d6e] font-bold cursor-pointer")}>
-            Blog
-          </li>
-          </Link>
+      <div className="sm:w-[17rem] md:mr-[3rem]">
+        <ul className="flex list-none justify-between text-[1rem] gap-[1rem] flex-wrap">
+            
+            {isWidth377 && <NavLink to={"/"} className={({isActive})=>(isActive ? "text-white font-bold cursor-pointer":" text-[#6c6d6e] font-bold cursor-pointer")}>Home</NavLink>}
+            <NavLink to={"/about"} className={({isActive})=>(isActive ? "text-white font-bold cursor-pointer":" text-[#6c6d6e] font-bold cursor-pointer")}>About</NavLink>
+            <NavLink to={"/project"} className={({isActive})=>(isActive ? "text-white font-bold cursor-pointer":" text-[#6c6d6e] font-bold cursor-pointer")}>Project</NavLink>
+            <NavLink to={"/playground"} className={({isActive})=>(isActive ? "text-white font-bold cursor-pointer":" text-[#6c6d6e] font-bold cursor-pointer")}>Playground</NavLink>
+            <NavLink to={"/blog"} className={({isActive})=>(isActive ? "text-white font-bold cursor-pointer":" text-[#6c6d6e] font-bold cursor-pointer")}>Blog</NavLink>
+
         </ul>
       </div>
     </div>
